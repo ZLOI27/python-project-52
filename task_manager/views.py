@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.urls import render
 
 def index(request):
-    return HttpResponse("Привет! Добро пожаловать в Task Manager.")
+    return render(request, 'index.html')
