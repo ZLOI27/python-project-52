@@ -1,0 +1,28 @@
+[project]
+name = "python-project-52"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "django>=6.0.5",
+    "dotenv>=0.9.9",
+]
+
+[tool.ruff]
+exclude = [
+    ".git",
+    ".venv",
+    "venv",
+    "*/migrations/*.py",
+    "*/settings.py",
+]
+
+[tool.ruff.per-file-ignores]
+"*/migrations/*" = ["F401", "E501"]
+"*" = ["F401"]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.15.14",
+]
