@@ -7,16 +7,8 @@ requires-python = ">=3.13"
 dependencies = [
     "dj-database-url>=3.1.2",
     "django>=6.0.5",
+    "django-bootstrap5>=26.2",
     "dotenv>=0.9.9",
-]
-
-[tool.ruff]
-exclude = [
-    ".git",
-    ".venv",
-    "venv",
-    "*/migrations/*.py",
-    "*/settings.py",
 ]
 
 [dependency-groups]
