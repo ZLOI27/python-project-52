@@ -1,6 +1,12 @@
 install:
 	uv sync
 
+collectstatic:
+	:
+
+migrate:
+	uv run python manage.py migrate
+
 start:
 	uv run python manage.py runserver
 
