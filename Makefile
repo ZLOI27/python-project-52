@@ -13,8 +13,23 @@ start:
 lint:
 	uv run ruff check
 
+messages:
+	uv run python manage.py makemessages -l ru --ignore=.venv/*
+
+compilemessages:
+	uv run python manage.py compilemessages --ignore=.venv/*
+
+check:
+	uv run ruff format --check
+	uv run ruff check
+	uv run python manage.py check
+	uv run python manage.py makemigrations --check --dry-run
+
 fix:
 	uv run ruff check --fix
+	uv run ruff format
+	uv run python manage.py makemessages -l ru --ignore=.venv/*
+	uv run python manage.py compilemessages --ignore=.venv/*
 
 build:
 	./build.sh
