@@ -1,6 +1,9 @@
 install:
 	uv sync
 
+start:
+	uv run python manage.py runserver
+
 lint:
 	uv run ruff check
 
