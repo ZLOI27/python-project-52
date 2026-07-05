@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-05 10:55+0000\n"
+"POT-Creation-Date: 2026-07-05 18:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,11 +20,11 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: task_manager/settings.py:125
+#: task_manager/settings.py:126
 msgid "English"
 msgstr "Английский"
 
-#: task_manager/settings.py:126
+#: task_manager/settings.py:127
 msgid "Russian"
 msgstr "Русский"
 
@@ -32,14 +32,68 @@ msgstr "Русский"
 msgid "Task Manager"
 msgstr "Менеджер задач"
 
-#: templates/base.html:24
+#: templates/base.html:24 users/templates/users/index.html:5
+#: users/templates/users/index.html:10
 msgid "Users"
 msgstr "Пользователи"
 
-#: templates/base.html:27
-msgid "Sign in"
-msgstr "Вход"
+#: templates/base.html:31
+msgid "Log out"
+msgstr "Выйти"
 
-#: templates/base.html:30
-msgid "Sign up"
+#: templates/base.html:37 templates/login.html:16
+msgid "Log in"
+msgstr "Войти"
+
+#: templates/base.html:40 users/templates/users/create.html:6
+#: users/templates/users/create.html:11
+msgid "Registration"
 msgstr "Регистрация"
+
+#: templates/login.html:6 templates/login.html:11
+msgid "Login"
+msgstr "Войти"
+
+#: users/templates/users/create.html:16
+msgid "Register"
+msgstr "Зарегистрировать"
+
+#: users/templates/users/index.html:16
+#, fuzzy
+#| msgid "Users"
+msgid "Username"
+msgstr "Пользователи"
+
+#: users/templates/users/index.html:17
+msgid "Full name"
+msgstr "Полное имя"
+
+#: users/templates/users/index.html:18
+msgid "Date joined"
+msgstr "Дата регистрации"
+
+#: users/templates/users/index.html:31
+msgid "Edit"
+msgstr "Изменить"
+
+#: users/templates/users/index.html:35
+msgid "Delete"
+msgstr "Удалить"
+
+#: users/templates/users/index.html:42
+msgid "No users found"
+msgstr "Пользователи не найдены"
+
+#: users/views.py:22
+#, fuzzy
+#| msgid "User has been successfully registered"
+msgid "User registered successfully"
+msgstr "Пользователь успешно зарегистрирован"
+
+#: users/views.py:30
+msgid "You are logged in"
+msgstr "Вы вошли в систему"
+
+#: users/views.py:36
+msgid "You are logged out"
+msgstr "Вы вышли из системы"

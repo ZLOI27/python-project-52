@@ -15,6 +15,7 @@ import dj_database_url
 from pathlib import Path
 from dotenv import load_dotenv
 from django.utils.translation import gettext_lazy as _
+from django.urls import reverse_lazy
 
 load_dotenv()
 
@@ -135,3 +136,7 @@ LOCALE_PATHS = [
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+LOGIN_REDIRECT_URL = reverse_lazy("index")
+LOGOUT_REDIRECT_URL = reverse_lazy("index")
+LOGIN_URL = reverse_lazy("login")
