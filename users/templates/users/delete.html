@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+{% load i18n %}
+
+{% block title %}
+    {% translate "Delete user" %}
+{% endblock %}
+
+{% block content %}
+
+<h1 class="my-4">{% translate "Delete user" %}</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {% bootstrap_button button_type="submit" content=_("Yes, delete") button_class="btn-danger" %}
+</form>
+
+{% endblock %}

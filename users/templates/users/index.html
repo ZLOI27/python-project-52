@@ -27,11 +27,11 @@
             <td>{{ user.get_full_name }}</td>
             <td>{{ user.date_joined|date:"d.m.Y H:i" }}</td>
             <td>
-                <a href="% url 'users:update' user.pk %">
+                <a href="{% url 'users:update' user.pk %}">
                     {% translate "Edit" %}
                 </a>
                 <br>
-                <a href="% url 'users:delete' user.pk %">
+                <a href="{% url 'users:delete' user.pk %}">
                     {% translate "Delete" %}
                 </a>
             </td>

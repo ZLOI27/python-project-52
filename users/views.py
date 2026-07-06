@@ -4,9 +4,10 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, ListView, UpdateView, DeleteView
+from django.shortcuts import redirect
 
-from users.forms import UserRegistrationForm
+from users.forms import UserRegistrationForm, UserUpdateForm
 
 
 class UserListView(ListView):
@@ -23,15 +24,41 @@ class UserCreateView(SuccessMessageMixin, CreateView):
 
 
 class UserLoginView(LoginView):
-    template_name = "users/login.html"
-    success_url = reverse_lazy("index")
+    template_name = "registration/login.html"
 
     def form_valid(self, form):
         messages.success(self.request, _("You are logged in"))
         return super().form_valid(form)
 
 
-class UserUpdateView(LogoutView):
+class UserLogoutView(LogoutView):
+    def post(self, request, *args, **kwargs):
+        messages.info(request, _("You are logged out"))
+        return super().post(request, *args, **kwargs)
+
+
+class UserUpdateView(SuccessMessageMixin, UpdateView):
+    model = User
+    form_class = UserUpdateForm
+    template_name = "users/update.html"
+    success_url = reverse_lazy("users:index")
+    success_message = _("User updated successfully")
+
     def dispatch(self, request, *args, **kwargs):
-        messages.success(request, _("You are logged out"))
+        if request.user.pk != self.get_object().pk:
+            messages.error(request, _("You have no permission to change another user"))
+            return redirect("users:index")
+        return super().dispatch(request, *args, **kwargs)
+
+
+class UserDeleteView(SuccessMessageMixin, DeleteView):
+    model = User
+    template_name = "users/delete.html"
+    success_url = reverse_lazy("users:index")
+    success_message = _("User deleted successfully")
+
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.pk != self.get_object().pk:
+            messages.error(request, _("You have no permission to delete another user"))
+            return redirect("users:index")
         return super().dispatch(request, *args, **kwargs)
