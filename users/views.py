@@ -2,10 +2,10 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import CreateView, ListView, UpdateView, DeleteView
-from django.shortcuts import redirect
+from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
 from users.forms import UserRegistrationForm, UserUpdateForm
 
@@ -46,7 +46,9 @@ class UserUpdateView(SuccessMessageMixin, UpdateView):
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.pk != self.get_object().pk:
-            messages.error(request, _("You have no permission to change another user"))
+            messages.error(
+                request, _("You have no permission to change another user")
+            )
             return redirect("users:index")
         return super().dispatch(request, *args, **kwargs)
 
@@ -59,6 +61,8 @@ class UserDeleteView(SuccessMessageMixin, DeleteView):
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.pk != self.get_object().pk:
-            messages.error(request, _("You have no permission to delete another user"))
+            messages.error(
+                request, _("You have no permission to delete another user")
+            )
             return redirect("users:index")
         return super().dispatch(request, *args, **kwargs)
