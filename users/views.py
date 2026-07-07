@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
@@ -25,6 +26,7 @@ class UserCreateView(SuccessMessageMixin, CreateView):
 
 class UserLoginView(LoginView):
     template_name = "users/login.html"
+    redirect_authenticated_user = True
 
     def form_valid(self, form):
         messages.success(self.request, _("You are logged in"))
@@ -37,7 +39,7 @@ class UserLogoutView(LogoutView):
         return super().post(request, *args, **kwargs)
 
 
-class UserUpdateView(SuccessMessageMixin, UpdateView):
+class UserUpdateView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     model = User
     form_class = UserUpdateForm
     template_name = "users/update.html"
@@ -53,11 +55,14 @@ class UserUpdateView(SuccessMessageMixin, UpdateView):
         return super().dispatch(request, *args, **kwargs)
 
 
-class UserDeleteView(SuccessMessageMixin, DeleteView):
+class UserDeleteView(LoginRequiredMixin, DeleteView):
     model = User
     template_name = "users/delete.html"
     success_url = reverse_lazy("users:index")
-    success_message = _("User deleted successfully")
+
+    def form_valid(self, form):
+        messages.success(self.request, _("User deleted successfully"))
+        return super().form_valid(form)
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.pk != self.get_object().pk:

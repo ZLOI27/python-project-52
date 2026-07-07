@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-07 00:29+0000\n"
+"POT-Creation-Date: 2026-07-07 11:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -103,30 +103,30 @@ msgstr "Изменить пользователя"
 msgid "Update"
 msgstr "Изменить"
 
-#: users/views.py:23
+#: users/views.py:24
 msgid "User registered successfully"
 msgstr "Пользователь успешно зарегистрирован"
 
-#: users/views.py:30
+#: users/views.py:32
 msgid "You are logged in"
 msgstr "Вы залогинены"
 
-#: users/views.py:36
+#: users/views.py:38
 msgid "You are logged out"
 msgstr "Вы разлогинены"
 
-#: users/views.py:45
+#: users/views.py:47
 msgid "User updated successfully"
 msgstr "Пользователь успешно изменен"
 
-#: users/views.py:50
+#: users/views.py:52
 msgid "You have no permission to change another user"
 msgstr "У вас нет прав для изменения"
 
-#: users/views.py:60
+#: users/views.py:64
 msgid "User deleted successfully"
 msgstr "Пользователь успешно удален"
 
-#: users/views.py:65
+#: users/views.py:70
 msgid "You have no permission to delete another user"
 msgstr "У вас нет прав на удаление"
