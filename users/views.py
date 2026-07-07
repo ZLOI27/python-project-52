@@ -24,7 +24,7 @@ class UserCreateView(SuccessMessageMixin, CreateView):
 
 
 class UserLoginView(LoginView):
-    template_name = "registration/login.html"
+    template_name = "users/login.html"
 
     def form_valid(self, form):
         messages.success(self.request, _("You are logged in"))
