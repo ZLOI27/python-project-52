@@ -19,11 +19,15 @@ messages:
 compilemessages:
 	uv run python manage.py compilemessages --ignore=.venv/*
 
+test:
+	uv run python manage.py test
+
 check:
 	uv run ruff format --check
 	uv run ruff check
 	uv run python manage.py check
 	uv run python manage.py makemigrations --check --dry-run
+	uv run python manage.py test
 
 fix:
 	uv run ruff check --fix
