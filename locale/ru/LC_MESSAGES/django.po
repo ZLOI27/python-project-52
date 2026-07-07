@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-06 23:41+0000\n"
+"POT-Creation-Date: 2026-07-07 00:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,8 +41,8 @@ msgstr "Пользователи"
 msgid "Logout"
 msgstr "Выход"
 
-#: templates/base.html:37 templates/registration/login.html:6
-#: templates/registration/login.html:11
+#: templates/base.html:37 users/templates/users/login.html:6
+#: users/templates/users/login.html:11
 msgid "Login"
 msgstr "Вход"
 
@@ -50,10 +50,6 @@ msgstr "Вход"
 #: users/templates/users/create.html:11
 msgid "Registration"
 msgstr "Регистрация"
-
-#: templates/registration/login.html:16
-msgid "Log in"
-msgstr "Войти"
 
 #: users/templates/users/create.html:16
 msgid "Register"
@@ -94,6 +90,10 @@ msgstr "Удалить"
 #: users/templates/users/index.html:42
 msgid "No users found"
 msgstr "Пользователи не найдены"
+
+#: users/templates/users/login.html:16
+msgid "Log in"
+msgstr "Войти"
 
 #: users/templates/users/update.html:6 users/templates/users/update.html:11
 msgid "Update user"
