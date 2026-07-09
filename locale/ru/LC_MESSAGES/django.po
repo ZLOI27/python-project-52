@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-07 11:21+0000\n"
+"POT-Creation-Date: 2026-07-09 10:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,22 +20,54 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: task_manager/settings.py:126
+#: statuses/templates/statuses/index.html:5
+#: statuses/templates/statuses/index.html:10 templates/base.html:24
+#: users/templates/users/index.html:5 users/templates/users/index.html:10
+msgid "Users"
+msgstr "Пользователи"
+
+#: statuses/templates/statuses/index.html:16
+#: users/templates/users/index.html:16
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: statuses/templates/statuses/index.html:17
+#: users/templates/users/index.html:17
+msgid "Full name"
+msgstr "Полное имя"
+
+#: statuses/templates/statuses/index.html:18
+#: users/templates/users/index.html:18
+msgid "Date joined"
+msgstr "Дата создания"
+
+#: statuses/templates/statuses/index.html:31
+#: users/templates/users/index.html:31
+msgid "Edit"
+msgstr "Изменить"
+
+#: statuses/templates/statuses/index.html:35
+#: users/templates/users/index.html:35
+msgid "Delete"
+msgstr "Удалить"
+
+#: statuses/templates/statuses/index.html:42
+#, fuzzy
+#| msgid "No users found"
+msgid "No statuses found"
+msgstr "Пользователи не найдены"
+
+#: task_manager/settings.py:127
 msgid "English"
 msgstr "Английский"
 
-#: task_manager/settings.py:127
+#: task_manager/settings.py:128
 msgid "Russian"
 msgstr "Русский"
 
 #: templates/base.html:11 templates/base.html:20 templates/index.html:6
 msgid "Task Manager"
 msgstr "Менеджер задач"
-
-#: templates/base.html:24 users/templates/users/index.html:5
-#: users/templates/users/index.html:10
-msgid "Users"
-msgstr "Пользователи"
 
 #: templates/base.html:31
 msgid "Logout"
@@ -66,26 +98,6 @@ msgstr "Да, удалить"
 #: users/templates/users/delete.html:18
 msgid "Cancel"
 msgstr "Отмена"
-
-#: users/templates/users/index.html:16
-msgid "Username"
-msgstr "Имя пользователя"
-
-#: users/templates/users/index.html:17
-msgid "Full name"
-msgstr "Полное имя"
-
-#: users/templates/users/index.html:18
-msgid "Date joined"
-msgstr "Дата создания"
-
-#: users/templates/users/index.html:31
-msgid "Edit"
-msgstr "Изменить"
-
-#: users/templates/users/index.html:35
-msgid "Delete"
-msgstr "Удалить"
 
 #: users/templates/users/index.html:42
 msgid "No users found"
