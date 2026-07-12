@@ -2,48 +2,49 @@
 {% load i18n %}
 
 {% block title %}
-    {% translate "Users" %}
+    {% translate "Statuses" %}
 {% endblock %}
 
 {% block content %}
 
-<h1 class="my-4">{% translate "Users" %}</h1>
+    <h1 class="my-4">{% translate "Statuses" %}</h1>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>{% translate "Username" %}</th>
-            <th>{% translate "Full name" %}</th>
-            <th>{% translate "Date joined" %}</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for status in statuses %}
-        <tr>
-            <td>{{ status.id }}</td>
-            <td>{{ status.name }}</td>
-            <td>{{ status.get_full_name }}</td>
-            <td>{{ status.created_at|date:"d.m.Y H:i" }}</td>
-            <td>
-                <a href="{% url 'statuses:update' status.pk %}">
-                    {% translate "Edit" %}
-                </a>
-                <br>
-                <a href="{% url 'statuses:delete' status.pk %}">
-                    {% translate "Delete" %}
-                </a>
-            </td>
-        </tr>
-        {% empty %}
-        <tr>
-            <td colspan="5" class="text-center text-muted">
-                {% translate "No statuses found" %}
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-left">
+        <a href="{% url 'statuses:create' %}" class="btn btn-primary">{% translate "Create" %}</a>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>{% translate "Name" %}</th>
+                <th>{% translate "Date created" %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for status in statuses %}
+            <tr>
+                <td>{{ status.id }}</td>
+                <td>{{ status.name }}</td>
+                <td>{{ status.created_at|date:"d.m.Y H:i" }}</td>
+                <td>
+                    <a href="{% url 'statuses:update' status.pk %}">
+                        {% translate "Edit" %}
+                    </a>
+                    <br>
+                    <a href="{% url 'statuses:delete' status.pk %}">
+                        {% translate "Delete" %}
+                    </a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3" class="text-center text-muted">
+                    {% translate "No statuses found" %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
 {% endblock %}

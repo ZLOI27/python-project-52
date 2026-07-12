@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-09 15:21+0000\n"
+"POT-Creation-Date: 2026-07-12 13:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,40 +20,76 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
+#: statuses/models.py:9 statuses/templates/statuses/index.html:20
+msgid "Name"
+msgstr "Имя"
+
+#: statuses/templates/statuses/create.html:6
+#: statuses/templates/statuses/create.html:11 templates/base.html:43
+#: users/templates/users/create.html:6 users/templates/users/create.html:11
+msgid "Registration"
+msgstr "Регистрация"
+
+#: statuses/templates/statuses/create.html:16
+#: users/templates/users/create.html:16
+msgid "Register"
+msgstr "Зарегистрировать"
+
+#: statuses/templates/statuses/delete.html:6
+#: statuses/templates/statuses/delete.html:11
+msgid "Delete status"
+msgstr "Удалить cтатус"
+
+#: statuses/templates/statuses/delete.html:14
+msgid "Are you sure you want to delete status"
+msgstr "Вы уверены, что хотите удалить статус"
+
+#: statuses/templates/statuses/delete.html:19
+#: users/templates/users/delete.html:19
+msgid "Yes, delete"
+msgstr "Да, удалить"
+
+#: statuses/templates/statuses/delete.html:22
+#: users/templates/users/delete.html:22
+msgid "Cancel"
+msgstr "Отмена"
+
 #: statuses/templates/statuses/index.html:5
-#: statuses/templates/statuses/index.html:10 templates/base.html:24
-#: users/templates/users/index.html:5 users/templates/users/index.html:10
-msgid "Users"
-msgstr "Пользователи"
+#: statuses/templates/statuses/index.html:10 templates/base.html:28
+msgid "Statuses"
+msgstr "Статусы"
 
-#: statuses/templates/statuses/index.html:16
-#: users/templates/users/index.html:16
-msgid "Username"
-msgstr "Имя пользователя"
+#: statuses/templates/statuses/index.html:13
+msgid "Create"
+msgstr "Создать"
 
-#: statuses/templates/statuses/index.html:17
-#: users/templates/users/index.html:17
-msgid "Full name"
-msgstr "Полное имя"
-
-#: statuses/templates/statuses/index.html:18
-#: users/templates/users/index.html:18
-msgid "Date joined"
+#: statuses/templates/statuses/index.html:21
+msgid "Date created"
 msgstr "Дата создания"
 
-#: statuses/templates/statuses/index.html:31
+#: statuses/templates/statuses/index.html:32
 #: users/templates/users/index.html:31
 msgid "Edit"
 msgstr "Изменить"
 
-#: statuses/templates/statuses/index.html:35
+#: statuses/templates/statuses/index.html:36
 #: users/templates/users/index.html:35
 msgid "Delete"
 msgstr "Удалить"
 
-#: statuses/templates/statuses/index.html:42
+#: statuses/templates/statuses/index.html:43
 msgid "No statuses found"
 msgstr "Статусы не найдены"
+
+#: statuses/templates/statuses/update.html:6
+#: statuses/templates/statuses/update.html:11
+msgid "Update status"
+msgstr "Изменить cтатус"
+
+#: statuses/templates/statuses/update.html:16
+#: users/templates/users/update.html:16
+msgid "Update"
+msgstr "Изменить"
 
 #: statuses/views.py:23
 msgid "Status created successfully"
@@ -79,35 +115,39 @@ msgstr "Русский"
 msgid "Task Manager"
 msgstr "Менеджер задач"
 
-#: templates/base.html:31
+#: templates/base.html:24 users/templates/users/index.html:5
+#: users/templates/users/index.html:10
+msgid "Users"
+msgstr "Пользователи"
+
+#: templates/base.html:34
 msgid "Logout"
 msgstr "Выход"
 
-#: templates/base.html:37 users/templates/users/login.html:6
+#: templates/base.html:40 users/templates/users/login.html:6
 #: users/templates/users/login.html:11
 msgid "Login"
 msgstr "Вход"
-
-#: templates/base.html:40 users/templates/users/create.html:6
-#: users/templates/users/create.html:11
-msgid "Registration"
-msgstr "Регистрация"
-
-#: users/templates/users/create.html:16
-msgid "Register"
-msgstr "Зарегистрировать"
 
 #: users/templates/users/delete.html:6 users/templates/users/delete.html:11
 msgid "Delete user"
 msgstr "Удалить пользователя"
 
-#: users/templates/users/delete.html:15
-msgid "Yes, delete"
-msgstr "Да, удалить"
+#: users/templates/users/delete.html:14
+msgid "Are you sure you want to delete user"
+msgstr "Вы уверены, что хотите удалить пользователя"
 
-#: users/templates/users/delete.html:18
-msgid "Cancel"
-msgstr "Отмена"
+#: users/templates/users/index.html:16
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: users/templates/users/index.html:17
+msgid "Full name"
+msgstr "Полное имя"
+
+#: users/templates/users/index.html:18
+msgid "Date joined"
+msgstr "Дата создания"
 
 #: users/templates/users/index.html:42
 msgid "No users found"
@@ -120,10 +160,6 @@ msgstr "Войти"
 #: users/templates/users/update.html:6 users/templates/users/update.html:11
 msgid "Update user"
 msgstr "Изменить пользователя"
-
-#: users/templates/users/update.html:16
-msgid "Update"
-msgstr "Изменить"
 
 #: users/views.py:24
 msgid "User registered successfully"

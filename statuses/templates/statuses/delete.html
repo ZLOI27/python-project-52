@@ -3,22 +3,22 @@
 {% load i18n %}
 
 {% block title %}
-    {% translate "Delete user" %}
+    {% translate "Delete status" %}
 {% endblock %}
 
 {% block content %}
 
-<h1 class="my-4">{% translate "Delete user" %}</h1>
+<h1 class="my-4">{% translate "Delete status" %}</h1>
 
 <p class="mb-4 text-muted fs-5">
-    {% translate "Are you sure you want to delete user" %}: <strong>{{ object.username }}</strong>?
+    {% translate "Are you sure you want to delete status" %}: <strong>{{ status.name }}</strong>?
 </p>
 
 <form method="post">
     {% csrf_token %}
     {% bootstrap_button button_type="submit" content=_("Yes, delete") button_class="btn-danger" %}
 
-    <a href="{% url 'users:index' %}" class="btn btn-secondary">
+    <a href="{% url 'statuses:index' %}" class="btn btn-secondary">
         {% translate "Cancel" %}
     </a>
 </form>
