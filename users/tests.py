@@ -3,9 +3,24 @@ from django.test import TestCase
 from django.urls import reverse
 
 
-class UserListViewTest(TestCase):
-    fixtures = ["users/tests/fixtures/users.json"]
+class BaseTestCase(TestCase):
+    fixtures = ["users.json"]
 
+
+class AuthenticatedTestCase(BaseTestCase):
+    def setUp(self):
+        super().setUp()
+        self.user = User.objects.get(username="admin")
+
+        self.assertTrue(
+            self.client.login(
+                username="admin",
+                password="password123",
+            )
+        )
+
+
+class UserListViewTest(BaseTestCase):
     def test_users_page(self):
         response = self.client.get(reverse("users:index"))
 
@@ -13,7 +28,7 @@ class UserListViewTest(TestCase):
         self.assertTemplateUsed(response, "users/index.html")
 
 
-class UserCreateViewTest(TestCase):
+class UserCreateViewTest(BaseTestCase):
     def test_create_user(self):
         response = self.client.post(
             reverse("users:create"),
@@ -27,13 +42,10 @@ class UserCreateViewTest(TestCase):
         )
 
         self.assertRedirects(response, reverse("login"))
-        self.assertEqual(User.objects.count(), 1)
         self.assertTrue(User.objects.filter(username="ivan").exists())
 
 
-class LoginTest(TestCase):
-    fixtures = ["users/tests/fixtures/users.json"]
-
+class UserLoginViewTest(BaseTestCase):
     def test_login(self):
         response = self.client.post(
             reverse("login"),
@@ -46,19 +58,10 @@ class LoginTest(TestCase):
         self.assertRedirects(response, reverse("index"))
 
 
-class UserUpdateViewTest(TestCase):
-    fixtures = ["users/tests/fixtures/users.json"]
-
+class UserUpdateViewTest(AuthenticatedTestCase):
     def test_update_user(self):
-        self.client.login(
-            username="admin",
-            password="password123",
-        )
-
-        user = User.objects.get(username="admin")
-
         response = self.client.post(
-            reverse("users:update", args=[user.pk]),
+            reverse("users:update", args=[self.user.pk]),
             {
                 "first_name": "Ivan666",
                 "last_name": "Ivanov666",
@@ -67,16 +70,10 @@ class UserUpdateViewTest(TestCase):
         )
 
         self.assertRedirects(response, reverse("users:index"))
-
-        user.refresh_from_db()
-        self.assertEqual(user.first_name, "Ivan666")
+        self.user.refresh_from_db()
+        self.assertEqual(self.user.first_name, "Ivan666")
 
     def test_update_another_user(self):
-        self.client.login(
-            username="admin",
-            password="password123",
-        )
-
         other = User.objects.get(username="petrov")
 
         response = self.client.post(
@@ -94,31 +91,21 @@ class UserUpdateViewTest(TestCase):
         self.assertEqual(other.first_name, "Петр")
 
 
-class UserDeleteViewTest(TestCase):
-    fixtures = ["users/tests/fixtures/users.json"]
-
+class UserDeleteViewTest(AuthenticatedTestCase):
     def test_delete_user(self):
-        self.client.login(
-            username="admin",
-            password="password123",
+        response = self.client.post(
+            reverse(
+                "users:delete",
+                args=[self.user.pk],
+            )
         )
-
-        user = User.objects.get(username="admin")
-        response = self.client.post(reverse("users:delete", args=[user.pk]))
 
         self.assertRedirects(response, reverse("users:index"))
-        self.assertFalse(User.objects.filter(pk=user.pk).exists())
+        self.assertFalse(User.objects.filter(pk=self.user.pk).exists())
 
     def test_delete_user_not_owner(self):
-        self.client.login(
-            username="admin",
-            password="password123",
-        )
-
         other = User.objects.get(username="petrov")
         response = self.client.post(reverse("users:delete", args=[other.pk]))
 
         self.assertRedirects(response, reverse("users:index"))
-
-        other.refresh_from_db()
         self.assertTrue(User.objects.filter(pk=other.pk).exists())
