@@ -21,7 +21,7 @@ class AuthenticatedTestCase(BaseTestCase):
 
 
 class UserListViewTest(BaseTestCase):
-    def test_users_page(self):
+    def test_users_list(self):
         response = self.client.get(reverse("users:index"))
 
         self.assertEqual(response.status_code, 200)

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-12 18:27+0000\n"
+"POT-Creation-Date: 2026-07-14 18:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,16 +21,18 @@ msgstr ""
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: statuses/models.py:9 statuses/templates/statuses/index.html:20
+#: tasks/templates/index.html:20
 msgid "Name"
 msgstr "Имя"
 
 #: statuses/templates/statuses/create.html:6
-#: statuses/templates/statuses/create.html:11 templates/base.html:43
+#: statuses/templates/statuses/create.html:11 tasks/templates/create.html:6
+#: tasks/templates/create.html:11 templates/base.html:43
 #: users/templates/users/create.html:6 users/templates/users/create.html:11
 msgid "Registration"
 msgstr "Регистрация"
 
-#: statuses/templates/statuses/create.html:16
+#: statuses/templates/statuses/create.html:16 tasks/templates/create.html:16
 #: users/templates/users/create.html:16
 msgid "Register"
 msgstr "Зарегистрировать"
@@ -44,12 +46,12 @@ msgstr "Удалить cтатус"
 msgid "Are you sure you want to delete status"
 msgstr "Вы уверены, что хотите удалить статус"
 
-#: statuses/templates/statuses/delete.html:19
+#: statuses/templates/statuses/delete.html:19 tasks/templates/delete.html:19
 #: users/templates/users/delete.html:19
 msgid "Yes, delete"
 msgstr "Да, удалить"
 
-#: statuses/templates/statuses/delete.html:22
+#: statuses/templates/statuses/delete.html:22 tasks/templates/delete.html:22
 #: users/templates/users/delete.html:22
 msgid "Cancel"
 msgstr "Отмена"
@@ -59,20 +61,20 @@ msgstr "Отмена"
 msgid "Statuses"
 msgstr "Статусы"
 
-#: statuses/templates/statuses/index.html:13
+#: statuses/templates/statuses/index.html:13 tasks/templates/index.html:13
 msgid "Create"
 msgstr "Создать"
 
-#: statuses/templates/statuses/index.html:21
+#: statuses/templates/statuses/index.html:21 tasks/templates/index.html:24
 msgid "Date created"
 msgstr "Дата создания"
 
-#: statuses/templates/statuses/index.html:32
+#: statuses/templates/statuses/index.html:32 tasks/templates/index.html:38
 #: users/templates/users/index.html:31
 msgid "Edit"
 msgstr "Изменить"
 
-#: statuses/templates/statuses/index.html:36
+#: statuses/templates/statuses/index.html:36 tasks/templates/index.html:42
 #: users/templates/users/index.html:35
 msgid "Delete"
 msgstr "Удалить"
@@ -86,7 +88,7 @@ msgstr "Статусы не найдены"
 msgid "Update status"
 msgstr "Изменить cтатус"
 
-#: statuses/templates/statuses/update.html:16
+#: statuses/templates/statuses/update.html:16 tasks/templates/update.html:16
 #: users/templates/users/update.html:16
 msgid "Update"
 msgstr "Изменить"
@@ -110,6 +112,48 @@ msgstr "Английский"
 #: task_manager/settings.py:129
 msgid "Russian"
 msgstr "Русский"
+
+#: tasks/templates/delete.html:6 tasks/templates/delete.html:11
+#, fuzzy
+#| msgid "Delete status"
+msgid "Delete task"
+msgstr "Удалить cтатус"
+
+#: tasks/templates/delete.html:14
+#, fuzzy
+#| msgid "Are you sure you want to delete status"
+msgid "Are you sure you want to delete task"
+msgstr "Вы уверены, что хотите удалить статус"
+
+#: tasks/templates/index.html:5 tasks/templates/index.html:10
+msgid "Tasks"
+msgstr ""
+
+#: tasks/templates/index.html:21
+#, fuzzy
+#| msgid "Statuses"
+msgid "Status"
+msgstr "Статусы"
+
+#: tasks/templates/index.html:22
+msgid "Author"
+msgstr ""
+
+#: tasks/templates/index.html:23
+msgid "Executor"
+msgstr ""
+
+#: tasks/templates/index.html:49
+#, fuzzy
+#| msgid "No statuses found"
+msgid "No tasks found"
+msgstr "Статусы не найдены"
+
+#: tasks/templates/update.html:6 tasks/templates/update.html:11
+#, fuzzy
+#| msgid "Update status"
+msgid "Update task"
+msgstr "Изменить cтатус"
 
 #: templates/base.html:11 templates/base.html:20 templates/index.html:6
 msgid "Task Manager"

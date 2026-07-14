@@ -23,7 +23,7 @@ class AuthenticatedTestCase(TestCase):
 
 
 class StatusListViewTest(AuthenticatedTestCase):
-    def test_status_page(self):
+    def test_status_list(self):
         response = self.client.get(reverse("statuses:index"))
 
         self.assertEqual(response.status_code, 200)
