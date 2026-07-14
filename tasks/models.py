@@ -1,1 +1,50 @@
-# Create your models here.
+from django.conf import settings
+from django.db import models
+from django.utils.translation import gettext_lazy as _
+
+
+class Task(models.Model):
+    name = models.CharField(
+        max_length=100,
+        verbose_name=_("Name"),
+    )
+
+    description = models.TextField(
+        blank=True,
+        verbose_name=_("Description"),
+    )
+
+    status = models.ForeignKey(
+        "statuses.Status",
+        on_delete=models.CASCADE,
+        related_name="statuses",
+        verbose_name=_("Status"),
+    )
+
+    created_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="tasks_created_by",
+        verbose_name=_("Created by"),
+    )
+
+    executors = models.ManyToManyField(
+        settings.AUTH_USER_MODEL,
+        related_name="tasks_executed_by",
+        verbose_name=_("Executor"),
+    )
+
+    """labels = models.ManyToManyField(
+        "labels.Label",
+        blank=True,
+        related_name="tasks_labels",
+        verbose_name=_("Labels"),
+    )
+    """
+
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+    )
+
+    def __str__(self):
+        return self.name
