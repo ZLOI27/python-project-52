@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+{% load i18n %}
+
+{% block title %}
+    {% translate "View task" %}
+{% endblock %}
+
+{% block content %}
+
+<h1 class="my-4">{% translate "View task" %}</h1>
+
+<div class="card">
+    <div class="card-body">
+        <table class="table table-bordered table-hover">
+            <tbody>
+                <tr>
+                    <th>{% translate "Name" %}</th>
+                    <td>{{ task.name }}</td>
+                </tr>
+
+                <tr>
+                    <th>{% translate "Description" %}</th>
+                    <td>
+                        {% if task.description %}
+                            {{ task.description }}
+                        {% else %}
+                            —
+                        {% endif %}
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>{% translate "Status" %}</th>
+                    <td>{{ task.status }}</td>
+                </tr>
+
+                <tr>
+                    <th>{% translate "Created by" %}</th>
+                    <td>{{ task.created_by }}</td>
+                </tr>
+
+                <tr>
+                    <th>{% translate "Executors" %}</th>
+                    <td>
+                        {% for executor in task.executors.all %}
+                            {{ executor }}{% if not forloop.last %}, {% endif %}
+                        {% empty %}
+                            —
+                        {% endfor %}
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>{% translate "Created at" %}</th>
+                    <td>{{ task.created_at|date:"d.m.Y H:i" }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a href="{% url 'tasks:update' task.pk %}" class="btn btn-primary">
+            {% translate "Update" %}
+        </a>
+
+        <a href="{% url 'tasks:delete' task.pk %}" class="btn btn-danger">
+            {% translate "Delete" %}
+        </a>
+    </div>
+</div>
+
+{% endblock %}

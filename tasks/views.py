@@ -1,7 +1,17 @@
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
-from django.views.generic import CreateView, DeleteView, ListView, UpdateView
+from django.urls import reverse_lazy
+from django.utils.translation import gettext as _
+from django.views.generic import (
+    CreateView,
+    DeleteView,
+    DetailView,
+    ListView,
+    UpdateView,
+)
 
+from tasks.forms import TaskForm
 from tasks.models import Task
 
 
@@ -11,17 +21,38 @@ class TaskListView(LoginRequiredMixin, ListView):
     context_object_name = "tasks"
 
 
-class TaskDetailView(LoginRequiredMixin, ListView):
-    pass
+class TaskDetailView(LoginRequiredMixin, DetailView):
+    model = Task
+    template_name = "tasks/detail.html"
+    context_object_name = "task"
 
 
 class TaskCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
-    pass
+    model = Task
+    form_class = TaskForm
+    template_name = "tasks/create.html"
+    success_url = reverse_lazy("tasks:index")
+    success_message = _("Task created successfully")
 
 
 class TaskUpdateView(LoginRequiredMixin, UpdateView):
-    pass
+    model = Task
+    form_class = TaskForm
+    template_name = "tasks/update.html"
+    context_object_name = "task"
+    success_url = reverse_lazy("tasks:index")
+    success_message = _("Task updated successfully")
 
 
 class TaskDeleteView(LoginRequiredMixin, DeleteView):
-    pass
+    model = Task
+    template_name = "tasks/delete.html"
+    context_object_name = "task"
+    success_url = reverse_lazy("tasks:index")
+
+    def form_valid(self, form):
+        messages.success(
+            self.request,
+            _("Status deleted successfully"),
+        )
+        return super().form_valid(form)

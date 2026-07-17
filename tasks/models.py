@@ -17,7 +17,7 @@ class Task(models.Model):
     status = models.ForeignKey(
         "statuses.Status",
         on_delete=models.CASCADE,
-        related_name="statuses",
+        related_name="tasks",
         verbose_name=_("Status"),
     )
 
@@ -30,17 +30,16 @@ class Task(models.Model):
 
     executors = models.ManyToManyField(
         settings.AUTH_USER_MODEL,
-        related_name="tasks_executed_by",
+        related_name="assigned_tasks",
         verbose_name=_("Executor"),
     )
 
-    """labels = models.ManyToManyField(
+    labels = models.ManyToManyField(
         "labels.Label",
         blank=True,
         related_name="tasks_labels",
         verbose_name=_("Labels"),
     )
-    """
 
     created_at = models.DateTimeField(
         auto_now_add=True,
