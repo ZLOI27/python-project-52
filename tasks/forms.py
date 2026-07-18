@@ -10,7 +10,6 @@ class TaskForm(forms.ModelForm):
             "name",
             "description",
             "status",
-            "author",
             "executor",
-            "label",
+            "labels",
         )

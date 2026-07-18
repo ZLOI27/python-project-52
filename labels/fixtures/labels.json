@@ -3,16 +3,24 @@
   "model": "labels.label",
   "pk": 1,
   "fields": {
-    "name": "отличная метка",
-    "created_at": "2026-07-17T17:36:36.953Z"
+    "name": "Простая метка",
+    "created_at": "2026-07-18T09:52:55.928Z"
   }
 },
 {
   "model": "labels.label",
   "pk": 2,
   "fields": {
-    "name": "еще одна метка",
-    "created_at": "2026-07-17T17:36:45.859Z"
+    "name": "Сложная метка",
+    "created_at": "2026-07-18T09:53:04.189Z"
+  }
+},
+{
+  "model": "labels.label",
+  "pk": 3,
+  "fields": {
+    "name": "Удаляемая метка",
+    "created_at": "2026-07-18T09:53:04.889Z"
   }
 }
 ]

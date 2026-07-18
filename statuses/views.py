@@ -12,7 +12,7 @@ from statuses.models import Status
 class StatusListView(LoginRequiredMixin, ListView):
     model = Status
     template_name = "statuses/index.html"
-    context_object_name = "statuses"
+    context_object_name = "status"
 
 
 class StatusCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):

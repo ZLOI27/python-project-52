@@ -1,5 +1,7 @@
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.translation import gettext as _
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
@@ -35,5 +37,20 @@ class LabelDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = Label
     template_name = "labels/delete.html"
     success_url = reverse_lazy("labels:index")
-    success_message = _("Label deleted successfully")
     context_object_name = "label"
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+
+        if self.object.tasks.exists():
+            messages.error(
+                request,
+                _("Cannot delete label because it is in use"),
+            )
+            return redirect(self.success_url)
+
+        messages.success(
+            request,
+            _("Label deleted successfully"),
+        )
+        return super().post(request, *args, **kwargs)

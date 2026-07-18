@@ -10,14 +10,17 @@ class AuthenticatedTestCase(TestCase):
         "users.json",
         "statuses.json",
     ]
+    t_name = "В работе статус"
+    t_username = "admin"
+    t_password = "zxcvbn12"
 
     def setUp(self):
         super().setUp()
-        self.user = User.objects.get(username="admin")
+        self.user = User.objects.get(username=self.t_username)
         self.assertTrue(
             self.client.login(
-                username="admin",
-                password="password123",
+                username=self.t_username,
+                password=self.t_password,
             )
         )
 
@@ -34,11 +37,11 @@ class StatusCreateViewTest(AuthenticatedTestCase):
     def test_create_status(self):
         response = self.client.post(
             reverse("statuses:create"),
-            {"name": "test_status"},
+            {"name": "test_create"},
         )
 
         self.assertRedirects(response, reverse("statuses:index"))
-        self.assertTrue(Status.objects.filter(name="test_status").exists())
+        self.assertTrue(Status.objects.filter(name="test_create").exists())
 
 
 class StatusUpdateViewTest(AuthenticatedTestCase):

@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.translation import gettext as _
 from django.views.generic import (
@@ -34,6 +35,10 @@ class TaskCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     success_url = reverse_lazy("tasks:index")
     success_message = _("Task created successfully")
 
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
 
 class TaskUpdateView(LoginRequiredMixin, UpdateView):
     model = Task
@@ -59,8 +64,6 @@ class TaskDeleteView(LoginRequiredMixin, DeleteView):
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.pk != self.get_object().pk:
-            messages.error(
-                request, _("You have no permission to delete task")
-            )
-            return redirect("users:index")
+            messages.error(request, _("You have no permission to delete task"))
+            return redirect("tasks:index")
         return super().dispatch(request, *args, **kwargs)

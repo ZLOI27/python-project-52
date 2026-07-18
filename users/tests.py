@@ -5,17 +5,21 @@ from django.urls import reverse
 
 class BaseTestCase(TestCase):
     fixtures = ["users.json"]
+    t_username = "admin"
+    t_password = "zxcvbn12"
+    t_other_username = "zk"
+    t_other_first_name = "Кирилл"
 
 
 class AuthenticatedTestCase(BaseTestCase):
     def setUp(self):
         super().setUp()
-        self.user = User.objects.get(username="admin")
+        self.user = User.objects.get(username=self.t_username)
 
         self.assertTrue(
             self.client.login(
-                username="admin",
-                password="password123",
+                username=self.t_username,
+                password=self.t_password,
             )
         )
 
@@ -50,8 +54,8 @@ class UserLoginViewTest(BaseTestCase):
         response = self.client.post(
             reverse("login"),
             {
-                "username": "admin",
-                "password": "password123",
+                "username": self.t_username,
+                "password": self.t_password,
             },
         )
 
@@ -65,7 +69,7 @@ class UserUpdateViewTest(AuthenticatedTestCase):
             {
                 "first_name": "Ivan666",
                 "last_name": "Ivanov666",
-                "username": "admin",
+                "username": self.t_username,
             },
         )
 
@@ -74,21 +78,21 @@ class UserUpdateViewTest(AuthenticatedTestCase):
         self.assertEqual(self.user.first_name, "Ivan666")
 
     def test_update_another_user(self):
-        other = User.objects.get(username="petrov")
+        other = User.objects.get(username=self.t_other_username)
 
         response = self.client.post(
             reverse("users:update", args=[other.pk]),
             {
                 "first_name": "Hack",
                 "last_name": "Hack",
-                "username": "petrov",
+                "username": self.t_other_username,
             },
         )
 
         self.assertRedirects(response, reverse("users:index"))
 
         other.refresh_from_db()
-        self.assertEqual(other.first_name, "Петр")
+        self.assertEqual(other.first_name, self.t_other_first_name)
 
 
 class UserDeleteViewTest(AuthenticatedTestCase):
@@ -104,7 +108,7 @@ class UserDeleteViewTest(AuthenticatedTestCase):
         self.assertFalse(User.objects.filter(pk=self.user.pk).exists())
 
     def test_delete_user_not_owner(self):
-        other = User.objects.get(username="petrov")
+        other = User.objects.get(username=self.t_other_username)
         response = self.client.post(reverse("users:delete", args=[other.pk]))
 
         self.assertRedirects(response, reverse("users:index"))

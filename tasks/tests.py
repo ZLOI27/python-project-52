@@ -6,17 +6,28 @@ from tasks.models import Task
 
 
 class BaseTestCase(TestCase):
-    fixtures = ["users.json", "statuses.json", "tasks.json"]
+    fixtures = [
+        "users.json",
+        "statuses.json",
+        "labels.json",
+        "tasks.json",
+    ]
+    t_username = "admin"
+    t_password = "zxcvbn12"
+    t_other_username = "zk"
+    t_other_password = "йцукен12"
+    t_other_first_name = "Кирилл"
+    t_task_name = "Первая задача"
 
 
 class AuthenticatedTestCase(BaseTestCase):
     def setUp(self):
         super().setUp()
-        self.user = User.objects.get(username="admin")
+        self.user = User.objects.get(username=self.t_username)
         self.assertTrue(
             self.client.login(
-                username="admin",
-                password="password123",
+                username=self.t_username,
+                password=self.t_password,
             )
         )
 
@@ -37,7 +48,7 @@ class TaskDetailViewTest(AuthenticatedTestCase):
         )
 
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, "tasks/task.html")
+        self.assertTemplateUsed(response, "tasks/detail.html")
 
 
 class TaskCreateViewTest(AuthenticatedTestCase):
@@ -48,7 +59,7 @@ class TaskCreateViewTest(AuthenticatedTestCase):
                 "name": "test_task_create",
                 "description": "test_task_create",
                 "status": 1,
-                "label": 1,
+                "labels": 1,
                 "executor": 1,
             },
         )
@@ -62,12 +73,18 @@ class TaskUpdateViewTest(AuthenticatedTestCase):
         task = Task.objects.get(pk=1)
         response = self.client.post(
             reverse("tasks:update", kwargs={"pk": task.pk}),
-            {"name": "test_task_update"},
+            {
+                "name": "test_update",
+                "description": "test_update",
+                "status": 1,
+                "labels": 1,
+                "executor": 1,
+            },
         )
 
         self.assertRedirects(response, reverse("tasks:index"))
         task.refresh_from_db()
-        self.assertEqual(task.name, "test_task_update")
+        self.assertEqual(task.name, "test_update")
 
 
 class TaskDeleteViewTest(AuthenticatedTestCase):
@@ -86,8 +103,8 @@ class TaskDeleteViewTest(AuthenticatedTestCase):
 
         self.assertTrue(
             self.client.login(
-                username="petrov",
-                password="password123",
+                username=self.t_other_username,
+                password=self.t_other_password,
             )
         )
 

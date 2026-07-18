@@ -3,17 +3,17 @@
 {% load i18n %}
 
 {% block title %}
-    {% translate "Registration" %}
+    {% translate "Create label" %}
 {% endblock %}
 
 {% block content %}
 
-<h1 class="my-4">{% translate "Registration" %}</h1>
+<h1 class="my-4">{% translate "Create label" %}</h1>
 
 <form method="post">
     {% csrf_token %}
     {% bootstrap_form form %}
-    {% bootstrap_button button_type="submit" content=_("Register") %}
+    {% bootstrap_button button_type="submit" content=_("Create") %}
 </form>
 
 {% endblock %}
