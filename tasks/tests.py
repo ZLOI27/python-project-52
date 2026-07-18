@@ -44,7 +44,13 @@ class TaskCreateViewTest(AuthenticatedTestCase):
     def test_task_create_view(self):
         response = self.client.post(
             reverse("tasks:create"),
-            {"name": "test_task_create"},
+            {
+                "name": "test_task_create",
+                "description": "test_task_create",
+                "status": 1,
+                "label": 1,
+                "executor": 1,
+            },
         )
 
         self.assertRedirects(response, reverse("tasks:index"))

@@ -56,3 +56,11 @@ class TaskDeleteView(LoginRequiredMixin, DeleteView):
             _("Status deleted successfully"),
         )
         return super().form_valid(form)
+
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.pk != self.get_object().pk:
+            messages.error(
+                request, _("You have no permission to delete task")
+            )
+            return redirect("users:index")
+        return super().dispatch(request, *args, **kwargs)

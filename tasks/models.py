@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.db import models
+from django.db.models import PROTECT
 from django.utils.translation import gettext_lazy as _
 
 
@@ -16,29 +17,32 @@ class Task(models.Model):
 
     status = models.ForeignKey(
         "statuses.Status",
-        on_delete=models.CASCADE,
+        on_delete=PROTECT,
         related_name="tasks",
         verbose_name=_("Status"),
     )
 
-    created_by = models.ForeignKey(
+    author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
-        related_name="tasks_created_by",
-        verbose_name=_("Created by"),
+        related_name="tasks_author",
+        verbose_name=_("Author"),
     )
 
-    executors = models.ManyToManyField(
+    executor = models.ForeignKey(
         settings.AUTH_USER_MODEL,
+        null=True,
+        blank=True,
+        on_delete=models.PROTECT,
         related_name="assigned_tasks",
         verbose_name=_("Executor"),
     )
 
-    labels = models.ManyToManyField(
+    label = models.ManyToManyField(
         "labels.Label",
         blank=True,
-        related_name="tasks_labels",
-        verbose_name=_("Labels"),
+        related_name="tasks_label",
+        verbose_name=_("Label"),
     )
 
     created_at = models.DateTimeField(

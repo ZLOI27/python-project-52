@@ -36,19 +36,13 @@
                 </tr>
 
                 <tr>
-                    <th>{% translate "Created by" %}</th>
-                    <td>{{ task.created_by }}</td>
+                    <th>{% translate "Author" %}</th>
+                    <td>{{ task.author }}</td>
                 </tr>
 
                 <tr>
-                    <th>{% translate "Executors" %}</th>
-                    <td>
-                        {% for executor in task.executors.all %}
-                            {{ executor }}{% if not forloop.last %}, {% endif %}
-                        {% empty %}
-                            —
-                        {% endfor %}
-                    </td>
+                    <th>{% translate "Executor" %}</th>
+                    <td>{{ task.executor }}</td>
                 </tr>
 
                 <tr>

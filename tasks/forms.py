@@ -10,6 +10,7 @@ class TaskForm(forms.ModelForm):
             "name",
             "description",
             "status",
-            "created_by",
-            "executors",
+            "author",
+            "executor",
+            "label",
         )
