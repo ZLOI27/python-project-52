@@ -71,11 +71,4 @@ class UserDeleteView(LoginRequiredMixin, DeleteView):
             )
             return redirect("users:index")
 
-        if self.get_object().authored_tasks.exists():
-            messages.error(
-                request,
-                _("Cannot delete user because it is in use"),
-            )
-            return redirect("users:index")
-
         return super().dispatch(request, *args, **kwargs)
