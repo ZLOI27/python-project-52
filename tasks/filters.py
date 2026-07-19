@@ -1,5 +1,7 @@
 import django_filters
+from django import forms
 from django.contrib.auth.models import User
+from django.utils.translation import gettext as _
 
 from labels.models import Label
 from statuses.models import Status
@@ -15,22 +17,25 @@ class TaskFilter(django_filters.FilterSet):
         queryset=User.objects.all(),
     )
 
-    labels = django_filters.ModelChoiceFilter(
+    label = django_filters.ModelChoiceFilter(
+        field_name="labels",
         queryset=Label.objects.all(),
+        label=_("Label"),
     )
 
     self_tasks = django_filters.BooleanFilter(
         method="filter_self_tasks",
-        label="Только свои задачи",
+        label=_("Only own tasks"),
+        widget=forms.CheckboxInput(),
     )
 
     class Meta:
         model = Task
-        fields = [
+        fields = (
             "status",
             "executor",
-            "labels",
-        ]
+            "label",
+        )
 
     def filter_self_tasks(self, queryset, name, value):
         if value:

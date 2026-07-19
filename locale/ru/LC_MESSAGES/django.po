@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-19 10:52+0000\n"
+"POT-Creation-Date: 2026-07-19 11:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: labels/models.py:9 labels/templates/labels/index.html:20
 #: statuses/models.py:9 statuses/templates/statuses/index.html:20
-#: tasks/models.py:10 tasks/templates/tasks/index.html:20
+#: tasks/models.py:10 tasks/templates/tasks/index.html:37
 msgid "Name"
 msgstr "Имя"
 
@@ -65,19 +65,19 @@ msgstr "Метки"
 
 #: labels/templates/labels/index.html:21
 #: statuses/templates/statuses/index.html:21
-#: tasks/templates/tasks/index.html:24
+#: tasks/templates/tasks/index.html:41
 msgid "Date created"
 msgstr "Дата создания"
 
 #: labels/templates/labels/index.html:33
 #: statuses/templates/statuses/index.html:33
-#: tasks/templates/tasks/index.html:43 users/templates/users/index.html:31
+#: tasks/templates/tasks/index.html:60 users/templates/users/index.html:31
 msgid "Edit"
 msgstr "Изменить"
 
 #: labels/templates/labels/index.html:37
 #: statuses/templates/statuses/index.html:37
-#: tasks/templates/tasks/detail.html:68 tasks/templates/tasks/index.html:47
+#: tasks/templates/tasks/detail.html:68 tasks/templates/tasks/index.html:64
 #: users/templates/users/index.html:35
 msgid "Delete"
 msgstr "Удалить"
@@ -163,27 +163,35 @@ msgstr "Английский"
 msgid "Russian"
 msgstr "Русский"
 
+#: tasks/filters.py:23
+msgid "Label"
+msgstr "Метка"
+
+#: tasks/filters.py:28
+msgid "Only own tasks"
+msgstr "Только свои задачи"
+
 #: tasks/models.py:15
 msgid "Description"
 msgstr "Описание"
 
 #: tasks/models.py:22 tasks/templates/tasks/detail.html:41
-#: tasks/templates/tasks/index.html:21
+#: tasks/templates/tasks/index.html:38
 msgid "Status"
 msgstr "Статус"
 
 #: tasks/models.py:29 tasks/templates/tasks/detail.html:31
-#: tasks/templates/tasks/index.html:22
+#: tasks/templates/tasks/index.html:39
 msgid "Author"
 msgstr "Автор"
 
 #: tasks/models.py:38 tasks/templates/tasks/detail.html:36
-#: tasks/templates/tasks/index.html:23
+#: tasks/templates/tasks/index.html:40
 msgid "Executor"
 msgstr "Исполнитель"
 
 #: tasks/templates/tasks/create.html:6 tasks/templates/tasks/create.html:11
-#: tasks/templates/tasks/index.html:13
+#: tasks/templates/tasks/index.html:14
 msgid "Create task"
 msgstr "Создать задачу"
 
@@ -203,16 +211,16 @@ msgstr "Просмотр задачи"
 msgid "Created at"
 msgstr "Дата создания"
 
-#: tasks/templates/tasks/index.html:5 tasks/templates/tasks/index.html:10
+#: tasks/templates/tasks/index.html:6 tasks/templates/tasks/index.html:11
 #: templates/base.html:34
 msgid "Tasks"
 msgstr "Задачи"
 
-#: tasks/templates/tasks/index.html:39
+#: tasks/templates/tasks/index.html:27 tasks/templates/tasks/index.html:56
 msgid "Show"
 msgstr "Показать"
 
-#: tasks/templates/tasks/index.html:54
+#: tasks/templates/tasks/index.html:71
 msgid "No tasks found"
 msgstr "Задачи не найдены"
 
