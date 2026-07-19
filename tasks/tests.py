@@ -118,3 +118,63 @@ class TaskDeleteViewTest(AuthenticatedTestCase):
         )
 
         self.assertTrue(Task.objects.filter(pk=task.pk).exists())
+
+
+class TaskFilterTest(AuthenticatedTestCase):
+    fixtures = [
+        "users.json",
+        "statuses.json",
+        "labels.json",
+        "tasks.json",
+    ]
+
+    def test_filter_by_status(self):
+        response = self.client.get(
+            reverse("tasks:index"),
+            {"status": 1},
+        )
+
+        tasks = response.context["tasks"]
+
+        self.assertEqual(tasks.count(), 2)
+
+    def test_filter_by_executor(self):
+        response = self.client.get(reverse("tasks:index"), {"executor": 2})
+
+        tasks = response.context["tasks"]
+
+        self.assertEqual(tasks.count(), 1)
+        self.assertContains(response, "Вторая задача")
+
+    def test_filter_by_label(self):
+        response = self.client.get(
+            reverse("tasks:index"),
+            {"label": 2},
+        )
+
+        tasks = response.context["tasks"]
+
+        self.assertEqual(tasks.count(), 1)
+        self.assertContains(response, "Первая задача")
+
+    def test_filter_by_self_tasks(self):
+        response = self.client.get(
+            reverse("tasks:index"),
+            {"self_tasks": "on"},
+        )
+
+        tasks = response.context["tasks"]
+
+        self.assertEqual(tasks.count(), 2)
+        self.assertEqual(tasks.first().author, self.user)
+
+    def test_filter_combined(self):
+
+        response = self.client.get(
+            reverse("tasks:index"), {"label": 1, "status": 1, "executor": 1}
+        )
+
+        tasks = response.context["tasks"]
+
+        self.assertEqual(tasks.count(), 1)
+        self.assertContains(response, "Первая задача")
