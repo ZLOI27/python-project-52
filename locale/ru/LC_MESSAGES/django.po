@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-19 10:14+0000\n"
+"POT-Creation-Date: 2026-07-19 10:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,12 +28,12 @@ msgid "Name"
 msgstr "Имя"
 
 #: labels/templates/labels/create.html:6 labels/templates/labels/create.html:11
+#: labels/templates/labels/index.html:13
 msgid "Create label"
 msgstr "Создать метку"
 
-#: labels/templates/labels/create.html:16 labels/templates/labels/index.html:13
+#: labels/templates/labels/create.html:16
 #: statuses/templates/statuses/create.html:16
-#: statuses/templates/statuses/index.html:13
 #: tasks/templates/tasks/create.html:16
 msgid "Create"
 msgstr "Создать"
@@ -121,6 +121,7 @@ msgstr "Метка успешно удалена"
 
 #: statuses/templates/statuses/create.html:6
 #: statuses/templates/statuses/create.html:11
+#: statuses/templates/statuses/index.html:13
 msgid "Create status"
 msgstr "Создать статус"
 
