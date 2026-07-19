@@ -3,40 +3,32 @@
 {% load i18n %}
 
 {% block title %}
-    {% translate "View task" %}
+    {% translate "Task details" %}
 {% endblock %}
 
 {% block content %}
 
-<h1 class="my-4">{% translate "View task" %}</h1>
+<h1 class="my-4">{% translate "Task details" %}</h1>
 
 <div class="card">
+    <div class="card-header bg-secondary text-white fs-4">
+        {{ task.name }}
+    </div>
+
     <div class="card-body">
-        <table class="table table-bordered table-hover">
+
+        {% if task.description %}
+            <p>{{ task.description }}</p>
+        {% else %}
+            <p>—</p>
+        {% endif %}
+
+        <hr>
+
+        <table class="table table-borderred">
             <tbody>
                 <tr>
-                    <th>{% translate "Name" %}</th>
-                    <td>{{ task.name }}</td>
-                </tr>
-
-                <tr>
-                    <th>{% translate "Description" %}</th>
-                    <td>
-                        {% if task.description %}
-                            {{ task.description }}
-                        {% else %}
-                            —
-                        {% endif %}
-                    </td>
-                </tr>
-
-                <tr>
-                    <th>{% translate "Status" %}</th>
-                    <td>{{ task.status }}</td>
-                </tr>
-
-                <tr>
-                    <th>{% translate "Author" %}</th>
+                    <th width="25%">{% translate "Author" %}</th>
                     <td>{{ task.author }}</td>
                 </tr>
 
@@ -46,19 +38,36 @@
                 </tr>
 
                 <tr>
+                    <th>{% translate "Status" %}</th>
+                    <td>{{ task.status }}</td>
+                </tr>
+
+                <tr>
                     <th>{% translate "Created at" %}</th>
                     <td>{{ task.created_at|date:"d.m.Y H:i" }}</td>
+                </tr>
+
+                <tr>
+                    <th>{% translate "Labels" %}</th>
+                    <td>
+                        {% for label in task.labels.all %}
+                            <li>{{ label.name }}</li>
+                        {% empty %}
+                            —
+                        {% endfor %}
+                    </td>
                 </tr>
             </tbody>
         </table>
 
-        <a href="{% url 'tasks:update' task.pk %}" class="btn btn-primary">
+        <a href="{% url 'tasks:update' task.pk %}">
             {% translate "Update" %}
         </a>
-
-        <a href="{% url 'tasks:delete' task.pk %}" class="btn btn-danger">
+        <br>
+        <a href="{% url 'tasks:delete' task.pk %}">
             {% translate "Delete" %}
         </a>
+
     </div>
 </div>
 
