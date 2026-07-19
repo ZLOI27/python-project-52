@@ -10,7 +10,7 @@
     <h1 class="my-4">{% translate "Tasks" %}</h1>
 
     <div class="d-grid gap-2 d-sm-flex justify-content-sm-left">
-        <a href="{% url 'tasks:create' %}" class="btn btn-primary">{% translate "Create" %}</a>
+        <a href="{% url 'tasks:create' %}" class="btn btn-primary">{% translate "Create task" %}</a>
     </div>
 
     <table class="table table-striped">
@@ -35,6 +35,10 @@
                 <td>{{ task.executor }}</td>
                 <td>{{ task.created_at|date:"d.m.Y H:i" }}</td>
                 <td>
+                    <a href="{% url 'tasks:detail' task.pk %}">
+                        {% translate "Show" %}
+                    </a>
+                    <br>
                     <a href="{% url 'tasks:update' task.pk %}">
                         {% translate "Edit" %}
                     </a>

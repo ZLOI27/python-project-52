@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-19 10:01+0000\n"
+"POT-Creation-Date: 2026-07-19 10:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,7 +34,7 @@ msgstr "Создать метку"
 #: labels/templates/labels/create.html:16 labels/templates/labels/index.html:13
 #: statuses/templates/statuses/create.html:16
 #: statuses/templates/statuses/index.html:13
-#: tasks/templates/tasks/create.html:16 tasks/templates/tasks/index.html:13
+#: tasks/templates/tasks/create.html:16
 msgid "Create"
 msgstr "Создать"
 
@@ -71,13 +71,13 @@ msgstr "Дата создания"
 
 #: labels/templates/labels/index.html:33
 #: statuses/templates/statuses/index.html:33
-#: tasks/templates/tasks/index.html:39 users/templates/users/index.html:31
+#: tasks/templates/tasks/index.html:43 users/templates/users/index.html:31
 msgid "Edit"
 msgstr "Изменить"
 
 #: labels/templates/labels/index.html:37
 #: statuses/templates/statuses/index.html:37
-#: tasks/templates/tasks/detail.html:60 tasks/templates/tasks/index.html:43
+#: tasks/templates/tasks/detail.html:60 tasks/templates/tasks/index.html:47
 #: users/templates/users/index.html:35
 msgid "Delete"
 msgstr "Удалить"
@@ -182,6 +182,7 @@ msgid "Executor"
 msgstr "Исполнитель"
 
 #: tasks/templates/tasks/create.html:6 tasks/templates/tasks/create.html:11
+#: tasks/templates/tasks/index.html:13
 msgid "Create task"
 msgstr "Создать задачу"
 
@@ -206,7 +207,11 @@ msgstr "Дата создания"
 msgid "Tasks"
 msgstr "Задачи"
 
-#: tasks/templates/tasks/index.html:50
+#: tasks/templates/tasks/index.html:39
+msgid "Show"
+msgstr "Показать"
+
+#: tasks/templates/tasks/index.html:54
 msgid "No tasks found"
 msgstr "Задачи не найдены"
 
