@@ -40,7 +40,7 @@ class TaskCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         return super().form_valid(form)
 
 
-class TaskUpdateView(LoginRequiredMixin, UpdateView):
+class TaskUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Task
     form_class = TaskForm
     template_name = "tasks/update.html"
@@ -58,12 +58,12 @@ class TaskDeleteView(LoginRequiredMixin, DeleteView):
     def form_valid(self, form):
         messages.success(
             self.request,
-            _("Status deleted successfully"),
+            _("Task deleted successfully"),
         )
         return super().form_valid(form)
 
     def dispatch(self, request, *args, **kwargs):
-        if request.user.pk != self.get_object().pk:
+        if request.user.pk != self.get_object().author.pk:
             messages.error(request, _("You have no permission to delete task"))
             return redirect("tasks:index")
         return super().dispatch(request, *args, **kwargs)

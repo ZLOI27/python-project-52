@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-18 12:25+0000\n"
+"POT-Creation-Date: 2026-07-19 09:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -150,7 +150,7 @@ msgstr "Статус успешно создан"
 msgid "Status updated successfully"
 msgstr "Статус успешно изменен"
 
-#: statuses/views.py:44 tasks/views.py:61
+#: statuses/views.py:44
 msgid "Status deleted successfully"
 msgstr "Статус успешно удален"
 
@@ -221,6 +221,10 @@ msgstr "Задача успешно создана"
 #: tasks/views.py:49
 msgid "Task updated successfully"
 msgstr "Задача успешно изменена"
+
+#: tasks/views.py:61
+msgid "Task deleted successfully"
+msgstr "Задача успешно удалена"
 
 #: tasks/views.py:67
 msgid "You have no permission to delete task"
