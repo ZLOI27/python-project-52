@@ -8,16 +8,18 @@ from django.views.generic import (
     CreateView,
     DeleteView,
     DetailView,
-    ListView,
     UpdateView,
 )
+from django_filters.views import FilterView
 
+from tasks.filters import TaskFilter
 from tasks.forms import TaskForm
 from tasks.models import Task
 
 
-class TaskListView(LoginRequiredMixin, ListView):
+class TaskListView(LoginRequiredMixin, FilterView):
     model = Task
+    filterset_class = TaskFilter
     template_name = "tasks/index.html"
     context_object_name = "tasks"
 

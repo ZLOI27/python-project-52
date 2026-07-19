@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-19 10:41+0000\n"
+"POT-Creation-Date: 2026-07-19 10:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -155,11 +155,11 @@ msgstr "Статус успешно изменен"
 msgid "Status deleted successfully"
 msgstr "Статус успешно удален"
 
-#: task_manager/settings.py:129
+#: task_manager/settings.py:130
 msgid "English"
 msgstr "Английский"
 
-#: task_manager/settings.py:130
+#: task_manager/settings.py:131
 msgid "Russian"
 msgstr "Русский"
 
@@ -220,19 +220,19 @@ msgstr "Задачи не найдены"
 msgid "Update task"
 msgstr "Изменить задачу"
 
-#: tasks/views.py:36
+#: tasks/views.py:38
 msgid "Task created successfully"
 msgstr "Задача успешно создана"
 
-#: tasks/views.py:49
+#: tasks/views.py:51
 msgid "Task updated successfully"
 msgstr "Задача успешно изменена"
 
-#: tasks/views.py:61
+#: tasks/views.py:63
 msgid "Task deleted successfully"
 msgstr "Задача успешно удалена"
 
-#: tasks/views.py:67
+#: tasks/views.py:69
 msgid "You have no permission to delete task"
 msgstr "У вас нет прав на удаление задачи"
 
