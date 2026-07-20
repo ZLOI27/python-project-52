@@ -24,9 +24,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 load_dotenv(BASE_DIR / '.env')
 
-ROLLBAR_ACCESS_TOKEN = os.getenv('ROLLBAR_ACCESS_TOKEN')
-ROLLBAR_ENVIRONMENT = os.getenv('ROLLBAR_ENVIRONMENT', 'development')
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
@@ -153,7 +150,7 @@ LOGIN_URL = reverse_lazy('login')
 
 ROLLBAR = {
     'access_token': os.getenv('ROLLBAR_ACCESS_TOKEN'),
-    'environment': 'development' if DEBUG else 'production',
+    'environment': os.getenv('ROLLBAR_ENVIRONMENT', 'development'),
     'code_version': os.getenv('GIT_SHA', '1.0.0'),
     'root': BASE_DIR,
     'branch': os.getenv('GIT_BRANCH', 'main'),
