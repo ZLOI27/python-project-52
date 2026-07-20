@@ -22,8 +22,9 @@ from task_manager import views
 from users.views import UserLoginView, UserLogoutView
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
     path("", views.index, name="index"),
+    path("test-error/", views.test_error, name="test_error"),
+    path("admin/", admin.site.urls),
     path("login/", UserLoginView.as_view(), name="login"),
     path("logout/", UserLogoutView.as_view(), name="logout"),
     path("users/", include("users.urls")),

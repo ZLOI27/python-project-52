@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 import os
 import dj_database_url
+import rollbar
 from pathlib import Path
 from dotenv import load_dotenv
 from django.utils.translation import gettext_lazy as _
@@ -21,16 +22,19 @@ from django.urls import reverse_lazy
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-load_dotenv(BASE_DIR / ".env")
+load_dotenv(BASE_DIR / '.env')
+
+ROLLBAR_ACCESS_TOKEN = os.getenv('ROLLBAR_ACCESS_TOKEN')
+ROLLBAR_ENVIRONMENT = os.getenv('ROLLBAR_ENVIRONMENT', 'development')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("SECRET_KEY")
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DEBUG", "False") == "True"
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'webserver', 'python-project-52-069x.onrender.com']
 
@@ -51,7 +55,8 @@ INSTALLED_APPS = [
     'statuses',
     'tasks',
     'labels',
-    "django_filters",
+    'django_filters',
+    'rollbar.contrib.django',
 ]
 
 MIDDLEWARE = [
@@ -62,6 +67,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
 ]
 
 ROOT_URLCONF = 'task_manager.urls'
@@ -141,6 +147,16 @@ LOCALE_PATHS = [
 
 STATIC_URL = 'static/'
 
-LOGIN_REDIRECT_URL = reverse_lazy("index")
-LOGOUT_REDIRECT_URL = reverse_lazy("index")
-LOGIN_URL = reverse_lazy("login")
+LOGIN_REDIRECT_URL = reverse_lazy('index')
+LOGOUT_REDIRECT_URL = reverse_lazy('index')
+LOGIN_URL = reverse_lazy('login')
+
+ROLLBAR = {
+    'access_token': os.getenv('ROLLBAR_ACCESS_TOKEN'),
+    'environment': 'development' if DEBUG else 'production',
+    'code_version': os.getenv('GIT_SHA', '1.0.0'),
+    'root': BASE_DIR,
+    'branch': os.getenv('GIT_BRANCH', 'main'),
+}
+
+rollbar.init(**ROLLBAR)
