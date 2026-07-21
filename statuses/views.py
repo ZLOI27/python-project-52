@@ -47,6 +47,8 @@ class StatusDeleteView(LoginRequiredMixin, DeleteView):
             messages.error(
                 request, _("Cannot delete status because it is in use")
             )
-            return redirect(reverse_lazy("statuses:index"))
+            return self.render_to_response(
+                self.get_context_data(object=self.object)
+            )
         messages.success(request, _("Status deleted successfully"))
         return redirect(reverse_lazy("statuses:index"))
