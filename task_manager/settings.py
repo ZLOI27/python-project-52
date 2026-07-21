@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 import os
 import dj_database_url
-import rollbar
 from pathlib import Path
 from dotenv import load_dotenv
 from django.utils.translation import gettext_lazy as _
@@ -155,5 +154,3 @@ ROLLBAR = {
     'root': BASE_DIR,
     'branch': os.getenv('GIT_BRANCH', 'main'),
 }
-
-rollbar.init(**ROLLBAR)
