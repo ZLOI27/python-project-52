@@ -2,12 +2,13 @@
 
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/ZLOI27/python-project-52/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/ZLOI27/python-project-52/actions)
+
+[![CI](https://github.com/ZLOI27/python-project-52/actions/workflows/my-check.yml/badge.svg)](https://github.com/ZLOI27/python-project-52/actions/workflows/my-check.yml)
+
 ### Link:
 [Project on render.com](https://python-project-52-069x.onrender.com/)
 
 [![CI](https://github.com/ZLOI27/python-project-52/actions/workflows/ci.yml/badge.svg)](https://github.com/ZLOI27/python-project-52/actions/workflows/ci.yml)
-
-[![CI](https://github.com/ZLOI27/python-project-52/actions/workflows/my-check.yml/badge.svg)](https://github.com/ZLOI27/python-project-52/actions/workflows/my-check.yml)
 
 Task Manager is a web application inspired by Redmine. It allows users to create, edit, assign, filter, and manage tasks. The project was developed as part of the Hexlet Python Backend Developer course.
 
