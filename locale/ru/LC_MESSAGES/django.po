@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-21 03:29+0000\n"
+"POT-Creation-Date: 2026-07-21 15:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -143,23 +143,29 @@ msgstr "Статусы"
 msgid "No statuses found"
 msgstr "Статусы не найдены"
 
-#: statuses/views.py:23
+#: statuses/views.py:25
 msgid "Status created successfully"
 msgstr "Статус успешно создан"
 
-#: statuses/views.py:32
+#: statuses/views.py:34
 msgid "Status updated successfully"
 msgstr "Статус успешно изменен"
 
-#: statuses/views.py:44
+#: statuses/views.py:48
+#, fuzzy
+#| msgid "Cannot delete label because it is in use"
+msgid "Cannot delete status because it is in use"
+msgstr "Невозможно удалить метку, потому что она используется"
+
+#: statuses/views.py:51
 msgid "Status deleted successfully"
 msgstr "Статус успешно удален"
 
-#: task_manager/settings.py:129
+#: task_manager/settings.py:120
 msgid "English"
 msgstr "Английский"
 
-#: task_manager/settings.py:130
+#: task_manager/settings.py:121
 msgid "Russian"
 msgstr "Русский"
 
