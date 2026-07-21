@@ -50,11 +50,15 @@
                 <tr>
                     <th>{% translate "Labels" %}</th>
                     <td>
-                        {% for label in task.labels.all %}
-                            <li>{{ label.name }}</li>
-                        {% empty %}
+                        {% if task.labels.exists %}
+                            <ul class="mb-0">
+                                {% for label in task.labels.all %}
+                                    <li>{{ label.name }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
                             —
-                        {% endfor %}
+                        {% endif %}
                     </td>
                 </tr>
             </tbody>
