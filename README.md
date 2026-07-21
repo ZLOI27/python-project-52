@@ -56,9 +56,10 @@ Create a `.env` file:
 ```env
 SECRET_KEY=your_secret_key
 DEBUG=True
-DATABASE_URL=sqlite:///db.sqlite3
+DATABASE_URL=your_database_url
 
 ROLLBAR_ACCESS_TOKEN=your_rollbar_token
+# development | production
 ROLLBAR_ENVIRONMENT=development
 ```
 
@@ -95,6 +96,3 @@ make lint
 make test
 ```
 
-## Live Demo
-
-https://python-project-52-069x.onrender.com
