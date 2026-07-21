@@ -66,6 +66,6 @@ class TaskDeleteView(LoginRequiredMixin, DeleteView):
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.pk != self.get_object().author.pk:
-            messages.error(request, _("You have no permission to delete task"))
+            messages.error(request, _("Only the author can delete the task"))
             return redirect("tasks:index")
         return super().dispatch(request, *args, **kwargs)

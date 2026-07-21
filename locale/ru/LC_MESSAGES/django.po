@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-21 16:20+0000\n"
+"POT-Creation-Date: 2026-07-21 16:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -245,8 +245,8 @@ msgid "Task deleted successfully"
 msgstr "Задача успешно удалена"
 
 #: tasks/views.py:69
-msgid "You have no permission to delete task"
-msgstr "У вас нет прав на удаление задачи"
+msgid "Only the author can delete the task"
+msgstr "Задачу может удалить только ее автор"
 
 #: templates/base.html:11 templates/base.html:20 templates/index.html:6
 msgid "Task Manager"
