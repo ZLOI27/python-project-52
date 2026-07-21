@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-21 15:48+0000\n"
+"POT-Creation-Date: 2026-07-21 15:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -152,10 +152,8 @@ msgid "Status updated successfully"
 msgstr "Статус успешно изменен"
 
 #: statuses/views.py:48
-#, fuzzy
-#| msgid "Cannot delete label because it is in use"
 msgid "Cannot delete status because it is in use"
-msgstr "Невозможно удалить метку, потому что она используется"
+msgstr "Невозможно удалить статус, потому что он используется"
 
 #: statuses/views.py:51
 msgid "Status deleted successfully"
