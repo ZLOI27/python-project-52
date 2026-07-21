@@ -46,16 +46,16 @@
             {% for task in tasks %}
             <tr>
                 <td>{{ task.id }}</td>
-                <td>{{ task.name }}</td>
+                <td>
+                    <a href="{% url 'tasks:detail' task.pk %}">
+                        {{ task.name }}
+                    </a>
+                </td>
                 <td>{{ task.status }}</td>
                 <td>{{ task.author }}</td>
                 <td>{{ task.executor }}</td>
                 <td>{{ task.created_at|date:"d.m.Y H:i" }}</td>
                 <td>
-                    <a href="{% url 'tasks:detail' task.pk %}">
-                        {% translate "Show" %}
-                    </a>
-                    <br>
                     <a href="{% url 'tasks:update' task.pk %}">
                         {% translate "Edit" %}
                     </a>

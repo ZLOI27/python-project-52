@@ -35,6 +35,10 @@ fix:
 	uv run python manage.py makemessages -l ru --ignore=.venv/*
 	uv run python manage.py compilemessages --ignore=.venv/*
 
+coverage:
+	uv run coverage run manage.py test
+	uv run coverage xml
+
 build:
 	./build.sh
 
