@@ -5,6 +5,8 @@
 
 [![CI](https://github.com/ZLOI27/python-project-52/actions/workflows/my-check.yml/badge.svg)](https://github.com/ZLOI27/python-project-52/actions/workflows/my-check.yml)
 
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=ZLOI27_python-project-52&metric=coverage)](https://sonarcloud.io/summary/new_code?id=ZLOI27_python-project-52)
+
 ### Link:
 [Project on render.com](https://python-project-52-069x.onrender.com/)
 
