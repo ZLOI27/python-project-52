@@ -25,6 +25,11 @@ class UserCreateView(SuccessMessageMixin, CreateView):
     success_message = _("User registered successfully")
 
 
+    def form_invalid(self, form):
+        print(form.errors.as_json(), flush=True)
+        return super().form_invalid(form)
+
+
 class UserLoginView(LoginView):
     template_name = "users/login.html"
     redirect_authenticated_user = True
